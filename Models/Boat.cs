@@ -5,7 +5,6 @@ namespace BridgeMonitor.Models
 {
     public class Boat
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         [JsonProperty("boat_name")]
         public string BoatName { get; set; }
 

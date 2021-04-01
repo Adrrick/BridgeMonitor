@@ -23,7 +23,20 @@ namespace BridgeMonitor.Controllers
         public IActionResult Index()
         {
             var boats = GetBoatFromApi();
-            return View(boats);
+            boats.Sort((x, y) => DateTime.Compare(x.ClosingDate, y.ClosingDate));
+            DateTime now = DateTime.Now;
+            foreach(var boat in boats)
+            {
+                if (boat.ClosingDate > now)
+                {
+                    return View(boat);
+                } else
+                {
+                    continue;
+                }
+            }
+            return View();
+            
         }
 
         public IActionResult Privacy()
